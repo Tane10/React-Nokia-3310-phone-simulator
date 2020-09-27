@@ -1,16 +1,15 @@
 import React from 'react';
 import './App.css';
-import VoicemailOutlinedIcon from '@material-ui/icons/VoicemailOutlined';
+import { VoicemailOutlined, SpaceBarOutlined } from '@material-ui/icons';
 import { Button, Grid, Typography, ButtonGroup } from '@material-ui/core';
+import { convertWords } from "./api/convertWords";
 
 function App() {
-
-  // const voiceMail = <VoicemailIcon />;
 
   const phoneKeyboardObject = [
     {
       num_1_key: {
-        labelName: <VoicemailOutlinedIcon />,
+        labelName: <VoicemailOutlined />,
 
       }
     },
@@ -61,71 +60,26 @@ function App() {
         labelName: "wxyz",
         keyValue: ["w", "x", "y", "z"]
       }
-    },
+    }
   ];
 
-  const [buttonState, setButtonState] = React.useState({
-    buttonLabel: "",
-    buttonValue: "",
-    index: 0
-  });
-
   const [wordString, setWordString] = React.useState("");
-  const [clickCount, setClickCount] = React.useState(0);
 
-  function keyBoardClick(btn, key) {
+  function keyBoardClick(btn) {
 
-    // console.log("click count ", clickCount)
-    // console.log("btn stuff ", btn.length)
-    // console.log("key stuff ", key)
-
-    if (key !== "num_1_key") {
-
-      if (key === buttonState.buttonLabel) {
-        console.log("hi")
-
-        if (clickCount <= btn.length) {
-
-          console.log("low")
-          setButtonState({
-            buttonLabel: key,
-            buttonValue: btn[clickCount],
-            index: clickCount
-          });
-
-          setClickCount(clickCount + 1);
-
-          console.log(buttonState, clickCount)
-        }
-
-      } else {
-
-        setButtonState({
-          buttonLabel: key,
-          buttonValue: btn[clickCount],
-          index: clickCount
-        });
-
-        setClickCount(0);
-        console.log(buttonState)
-
-        console.log('in dat else')
-
-        console.log("click count ", clickCount)
-        console.log("btn stuff ", btn[clickCount])
-        console.log("key stuff ", key)
-      }
-
+    if (wordString === "") {
+      setWordString(btn)
+    } else {
+      const newWord = wordString + btn;
+      setWordString(newWord)
     }
-
   };
 
   const phoneButton = phoneKeyboardObject.map((key, idx) => {
-    const btnNum = idx + 1;
+    const btnNum = `${idx + 1}`;
     let buttonValue = key[`num_${idx + 1}_key`].keyValue;
-    let keyName = `num_${idx + 1}_key`;
 
-    return <Button onClick={() => keyBoardClick(buttonValue, keyName)} variant="outlined" value={buttonValue}>
+    return <Button onClick={() => keyBoardClick(btnNum)} variant="outlined" >
       {btnNum} {buttonValue}
     </Button>;
   })
@@ -145,15 +99,21 @@ function App() {
           paddingBottom: "8px"
         }}>
           <Typography>
-            {wordString}
+            {wordString}_
           </Typography>
         </Grid>
 
         <Grid container justify="center" alignItems="center" >
-          <Grid item xs={8} sm={2} md={4} >
+          <Grid item xs={8} sm={2} md={5} >
             <div>
               {phoneButton}
+              <Button onClick={() => keyBoardClick(0)} variant="outlined" >
+                0<SpaceBarOutlined />
+              </Button>
             </div>
+          </Grid>
+          <Grid item xs={5} sm={2} md={5}>
+            <Button variant="contained" color="primary" onClick={() => convertWords(wordString)}> Convert</Button>
           </Grid>
         </Grid>
       </Grid>
