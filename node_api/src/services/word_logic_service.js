@@ -15,7 +15,8 @@ class TrieTransformStringLogic {
     }
 
     _letterMatrix = [];
-    _wordList = JSON.parse(fs.readFileSync('wordlist.json'));
+    _realWordMatrix = [];
+    _wordList = JSON.parse(fs.readFileSync('words_dictionary.json'));
 
     _numberLetterMappings = {
         "2": ["a", "b", "c"],
@@ -30,9 +31,6 @@ class TrieTransformStringLogic {
     };
 
     letterCombination() {
-        this._wordList.forEach(word => {
-            this.insert(word)
-        })
         if (!this.rawNumberString || !this.rawNumberString.length) return [];
 
         this._letterMatrix = this.rawNumberString.split("").map(digit => this._numberLetterMappings[digit] || [""]);
@@ -41,16 +39,14 @@ class TrieTransformStringLogic {
             const combinations = [];
             strings.reduce((_, current) => {
                 [...currentEntry].map((digit) => {
-                    if (this.isWord(`${current}${digit}`)) {
-                        combinations.push(`${current}${digit}`)
-                    }
+                    combinations.push(`${current}${digit}`)
+
                 });
             }, "");
 
             return combinations;
         });
     }
-
 
     insert(word) {
         if (word.length === 0) return
@@ -85,7 +81,23 @@ class TrieTransformStringLogic {
         return this._getNodeForPrefix(word).isEnd
     }
 
+    wordProcess(wordMatrix) {
+
+        this._wordList.forEach(newWord => {
+            this.insert(newWord);
+        });
+
+        wordMatrix.forEach(val => {
+            if (this.isWord(val)) {
+                this._realWordMatrix.push(val);
+            }
+        })
+
+        return this._realWordMatrix
+    }
+
 }
 
-const newWordConvert = new TrieTransformStringLogic("526");
-console.log(newWordConvert.letterCombination())
+const newWordConvert = new TrieTransformStringLogic("5464");
+const letterCombination = newWordConvert.letterCombination();
+console.log(newWordConvert.wordProcess(letterCombination))
