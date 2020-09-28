@@ -94,19 +94,15 @@ function App() {
           gridTemplateRows: '1fr',
           gridTemplateAreas: 'overlap'
         }}>
+          <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
+            <img src={NokiaBackground} style={{ height: "700px", width: "100%", zIndex: '1', gridArea: 'overlap' }} />
+          </Grid>
 
-
-
-          <img src={NokiaBackground} style={{ height: "700px", width: "100%", zIndex: '1', gridArea: 'overlap' }} />
-
-          <NumberKeyPad style={{ zIndex: '1', gridArea: 'overlap' }} />
-
-
+          <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
+            <NumberKeyPad style={{ zIndex: '1', gridArea: 'overlap' }} />
+          </Grid>
         </div>
-
-
       </Grid>
-
     </div >
 
   )
