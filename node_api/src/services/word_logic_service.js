@@ -1,14 +1,13 @@
 const fs = require('fs')
 
-class TrieNode {
+export class TrieNode {
     constructor() {
         this.isEnd = false
         this.children = {}
     }
 }
 
-
-class TrieTransformStringLogic {
+export class TrieTransformStringLogic {
     constructor(rawNumberString) {
         this.rawNumberString = rawNumberString;
         this.root = new TrieNode();
@@ -97,7 +96,3 @@ class TrieTransformStringLogic {
     }
 
 }
-
-const newWordConvert = new TrieTransformStringLogic("5464");
-const letterCombination = newWordConvert.letterCombination();
-console.log(newWordConvert.wordProcess(letterCombination))

@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import { VoicemailOutlined, SpaceBarOutlined } from '@material-ui/icons';
-import { Button, Grid, Typography, ButtonGroup } from '@material-ui/core';
-import { convertWords } from "./api/convertWords";
+import { VoicemailOutlined } from '@material-ui/icons';
+import { Button, Container, Grid } from '@material-ui/core';
+import NokiaBackground from "./images/nokia/nokia_background_shadow.svg";
+import NumberKeyPad from "./components/keyboard_component"
 
 function App() {
 
@@ -84,41 +85,67 @@ function App() {
     </Button>;
   })
 
-
   return (
-    < div >
+    <div>
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={8} sm={9} md={12}>
-          <Typography align="center" >Enter message here</Typography>
-        </Grid>
-        <Grid item xs={8} sm={9} md={6} container justify="center" alignItems="center" style={{
-          height: "100px",
-          width: "100px",
-          backgroundColor: "#D1DCDF",
-          paddingTop: "8px",
-          paddingBottom: "8px"
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gridTemplateRows: '1fr',
+          gridTemplateAreas: 'overlap'
         }}>
-          <Typography>
-            {wordString}_
-          </Typography>
-        </Grid>
 
-        <Grid container justify="center" alignItems="center" >
-          <Grid item xs={8} sm={2} md={5} >
-            <div>
-              {phoneButton}
-              <Button onClick={() => keyBoardClick(0)} variant="outlined" >
-                0<SpaceBarOutlined />
-              </Button>
-            </div>
-          </Grid>
-          <Grid item xs={5} sm={2} md={5}>
-            <Button variant="contained" color="primary" onClick={() => convertWords(wordString)}> Convert</Button>
-          </Grid>
-        </Grid>
+
+
+          <img src={NokiaBackground} style={{ height: "700px", width: "100%", zIndex: '1', gridArea: 'overlap' }} />
+
+          <NumberKeyPad style={{ zIndex: '1', gridArea: 'overlap' }} />
+
+
+        </div>
+
+
       </Grid>
-    </div>
+
+    </div >
+
   )
+
+
+  // return (
+  //   < div >
+  //     <Grid container justify="center" alignItems="center">
+  //       <Grid item xs={8} sm={9} md={12}>
+  //         <Typography align="center" >Enter message here</Typography>
+  //       </Grid>
+  //       <Grid item xs={8} sm={9} md={6} container justify="center" alignItems="center" style={{
+  //         height: "100px",
+  //         width: "100px",
+  //         backgroundColor: "#D1DCDF",
+  //         paddingTop: "8px",
+  //         paddingBottom: "8px"
+  //       }}>
+  //         <Typography>
+  //           {wordString}_
+  //         </Typography>
+  //       </Grid>
+
+  //       <Grid container justify="center" alignItems="center" >
+  //         <Grid item xs={8} sm={2} md={5} >
+  //           <div>
+  //             {phoneButton}
+  //             <Button onClick={() => keyBoardClick(0)} variant="outlined" >
+  //               0<SpaceBarOutlined />
+  //             </Button>
+  //           </div>
+  //         </Grid>
+  //         <Grid item xs={5} sm={2} md={5}>
+  //           <Button variant="contained" color="primary" onClick={() => convertWords(wordString)}> Convert</Button>
+  //         </Grid>
+  //       </Grid>
+  //     </Grid>
+  //   </div>
+  // )
 }
 
 export default App;

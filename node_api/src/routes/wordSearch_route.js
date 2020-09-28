@@ -1,35 +1,15 @@
 import express from "express";
+import { TrieTransformStringLogic } from "../services/word_logic_service"
 
 var router = express.Router();
 
-// GET all Users
-router.get("/api/v1/words", async(req, res) => {
+// POST convert number sting to words array 
+router.post("/api/v1/words", async(req, res) => {
     try {
-        res.status(200).send("got all words");
-    } catch (error) {
-        throw error
-    }
-});
-
-//PUT new words
-router.put("/api/v1/words/update", async(req, res) => {
-    try {
-        // const reqBody = req.body;
-        // const updateUser = await updateUserDetails(reqBody, await tokenFormater(req.headers.authorization));
-        // res.status(updateUser.status).send(updateUser.body);
-        res.status(200).send("added new words");
-
-    } catch (error) {
-        throw error
-    }
-});
-
-//DELETE remove words
-router.delete("/api/v1/words/remove", async(req, res) => {
-    try {
-        // const reqBody = req.body;
-        // const deletedUser = await deleteUser(reqBody, await tokenFormater(req.headers.authorization));
-        res.status(202).send("deleted word");
+        const reqBody = req.body;
+        const convertNumbers = new TrieTransformStringLogic(reqBody.numbers);
+        const wordList = convertNumbers.letterCombination();
+        res.status(200).send(wordList);
     } catch (error) {
         throw error
     }
