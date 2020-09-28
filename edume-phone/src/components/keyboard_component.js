@@ -13,8 +13,11 @@ import Star_btn from "../images/nokia/star_btn.svg"
 import Call_btn from "../images/nokia/call_btn.svg"
 import Action_btn from "../images/nokia/nokia_actionBtn.svg"
 import UpDown_btn from "../images/nokia/up_down_btn.svg"
+import Up_icon from "../images/nokia/up_icon.svg"
+import Down_icon from "../images/nokia/down_icon.svg"
 import { Button, Grid, makeStyles, withStyles } from "@material-ui/core"
 import React from 'react';
+import ScreenComponent from "./screen_componet"
 
 
 const buttonArray = [
@@ -22,38 +25,25 @@ const buttonArray = [
     Key_5, Key_6, Key_7, Key_8,
     Key_9, Star_btn, Key_0, Hash_key];
 
-
-const numbKeys = buttonArray.forEach((key) => {
-    return (
-        <Button>
-            <img src={key} style={{ height: "100%", width: "100%" }} />
-        </Button>
-    )
-})
-
-
-const useStyles = makeStyles((theme) => ({
-    margin: {
-        margin: "0px",
-    },
-    padding: {
-        padding: '2px'
-    }
-}));
-
 export default function NumberKeyPad() {
-    const classes = useStyles();
     return (
+        <div>
+        <div>
+            <ScreenComponent/>
+        </div>
         <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "100px" }}>
             <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
                 <img src={Action_btn} style={{ position: "relative", top: "25px" }} />
             </Grid>
 
-            <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "20px", right: "75px" }} >
-                <img src={Call_btn} />
+            <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "20px", right: "40px" }} >
+                <img src={Call_btn} style={{ position: "relative", left: "10px" }}/>
+                <img src={UpDown_btn} style={{ position: "relative", left: "70px", top: "5px" }}/>
             </Grid>
-           
-
+            <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", bottom: "50px", left: "10px"}} >
+                <Button size="small" style={{ position: "relative", left: "100px", bottom: "20px" }}><img src={Up_icon} /></Button>
+                <Button size="small"><img src={Down_icon} /></Button>
+            </Grid>
                 <Grid item xs={12} sm={12} md={12}>
                     <Button size="small"><img src={Key_1} /></Button>
                     <Button size="small"><img src={Key_2} /></Button>
@@ -76,8 +66,7 @@ export default function NumberKeyPad() {
                     <Button size="small"><img src={Key_0} /></Button>
                     <Button size="small"><img src={Hash_key} /></Button>
                 </Grid>
-
-
         </div >
+        </div>
     )
 }
