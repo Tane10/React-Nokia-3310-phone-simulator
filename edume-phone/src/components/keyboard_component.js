@@ -15,58 +15,60 @@ import Action_btn from "../images/nokia/nokia_actionBtn.svg"
 import UpDown_btn from "../images/nokia/up_down_btn.svg"
 import Up_icon from "../images/nokia/up_icon.svg"
 import Down_icon from "../images/nokia/down_icon.svg"
-import { Button, Grid, makeStyles, withStyles } from "@material-ui/core"
+import { Button, Grid} from "@material-ui/core"
 import React from 'react';
 import ScreenComponent from "./screen_componet"
 
+const numberValue = ["2", "3", "4", "5", "6", "7", "8", "9", " "];
 
-const buttonArray = [
-    Key_1, Key_2, Key_3, Key_4,
-    Key_5, Key_6, Key_7, Key_8,
-    Key_9, Star_btn, Key_0, Hash_key];
-
+// TODO: write funtion to capture numbers and send to screnn compent then click up down arrows to chnage words
 export default function NumberKeyPad() {
+
+    const [numberCapture, setNumberCapture] = React.useState("");
+    const [incrementWord, setIncrementWord] = React.useState();
+    const captureNumbers = (value) => setNumberCapture(numberCapture + value);
+    const changeWord = (value) => setIncrementWord(value);
+
     return (
         <div>
-        <div>
-            <ScreenComponent/>
-        </div>
-        <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "100px" }}>
-            <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
-                <img src={Action_btn} style={{ position: "relative", top: "25px" }} />
-            </Grid>
-
-            <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "20px", right: "40px" }} >
-                <img src={Call_btn} style={{ position: "relative", left: "10px" }}/>
-                <img src={UpDown_btn} style={{ position: "relative", left: "70px", top: "5px" }}/>
-            </Grid>
-            <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", bottom: "50px", left: "10px"}} >
-                <Button size="small" style={{ position: "relative", left: "100px", bottom: "20px" }}><img src={Up_icon} /></Button>
-                <Button size="small"><img src={Down_icon} /></Button>
-            </Grid>
-                <Grid item xs={12} sm={12} md={12}>
-                    <Button size="small"><img src={Key_1} /></Button>
-                    <Button size="small"><img src={Key_2} /></Button>
-                    <Button size="small"><img src={Key_3} /></Button>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12}>
-                    <Button size="small"><img src={Key_4} /></Button>
-                    <Button size="small"><img src={Key_5} /></Button>
-                    <Button size="small"><img src={Key_6} /></Button>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12}>
-                    <Button size="small"><img src={Key_7} /></Button>
-                    <Button size="small"><img src={Key_8} /></Button>
-                    <Button size="small"><img src={Key_9} /></Button>
-
+            <div>
+                <ScreenComponent text={numberCapture} arrows={incrementWord} />
+            </div>
+            <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "100px" }}>
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
+                    <img alt="" src={Action_btn} style={{ position: "relative", top: "25px" }} />
                 </Grid>
 
-                <Grid item xs={12} sm={12} md={12}>
-                    <Button size="small"><img src={Star_btn} /></Button>
-                    <Button size="small"><img src={Key_0} /></Button>
-                    <Button size="small"><img src={Hash_key} /></Button>
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "20px", right: "40px" }} >
+                    <img alt="" src={Call_btn} style={{ position: "relative", left: "10px" }} />
+                    <img alt="" src={UpDown_btn} style={{ position: "relative", left: "70px", top: "5px" }} />
                 </Grid>
-        </div >
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", bottom: "50px", left: "10px" }} >
+                    <Button onClick={()=> changeWord("+")} size="small" style={{ position: "relative", left: "100px", bottom: "20px" }}><img alt="" src={Up_icon} /></Button>
+                    <Button onClick={()=> changeWord("-")} size="small"><img alt="" src={Down_icon} /></Button>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Button size="small"><img alt="" src={Key_1} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[0])}} size="small"><img alt="" src={Key_2} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[1])}}  size="small"><img alt="" src={Key_3} /></Button>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Button onClick={() => {captureNumbers(numberValue[2])}} size="small"><img alt="" src={Key_4} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[3])}} size="small"><img alt="" src={Key_5} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[4])}} size="small"><img alt="" src={Key_6} /></Button>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Button onClick={() => {captureNumbers(numberValue[5])}} size="small"><img alt="" src={Key_7} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[6])}} size="small"><img alt="" src={Key_8} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[7])}} size="small"><img alt="" src={Key_9} /></Button>
+                </Grid>
+
+                <Grid item xs={12} sm={12} md={12}>
+                    <Button size="small"><img alt="" src={Star_btn} /></Button>
+                    <Button onClick={() => {captureNumbers(numberValue[8])}} size="small"><img alt="" src={Key_0} /></Button>
+                    <Button size="small"><img alt="" src={Hash_key} /></Button>
+                </Grid>
+            </div >
         </div>
     )
 }
