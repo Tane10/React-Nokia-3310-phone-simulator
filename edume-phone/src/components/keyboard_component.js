@@ -25,22 +25,22 @@ const numberValue = ["2", "3", "4", "5", "6", "7", "8", "9", " "];
 export default function NumberKeyPad() {
 
     const [numberCapture, setNumberCapture] = React.useState("");
-    const [incrementWord, setIncrementWord] = React.useState();
     const captureNumbers = (value) => setNumberCapture(numberCapture + value);
-    const changeWord = (value) => setIncrementWord(value);
 
     return (
         <div>
             <div>
-                <ScreenComponent text={numberCapture} arrows={incrementWord} />
+                <ScreenComponent text={numberCapture} />
             </div>
             <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "60px" }}>
                 <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", top: "25px" }} >
                     <img alt="" src={Action_btn} style={{  }} />
                 </Grid>
 
-                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "15px", right: "60px" }} >
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "5px", right: "60px" }} >
+                    <Button size="small">
                     <img alt="" src={Call_btn}/>
+                        </Button>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
                     <Button size="small"><img alt="" src={Key_1} /></Button>

@@ -12,10 +12,11 @@ export default function ScreenComponent({ text, arrows }) {
         },
     })
 
-    const [message, setMessage] = React.useState(" ");
+    const [message, setMessage] = React.useState("");
     const [wordList, setWordList] = React.useState([]);
     const [counter, setCounter] = React.useState(0);
-
+    const [stringLength, setStringLength] = React.useState(0);
+    const maxStringLength = 23;
 
     const changeWord = (increment) => {
         if (wordList.length !== 0) {
@@ -30,12 +31,24 @@ export default function ScreenComponent({ text, arrows }) {
         }
     }
 
+
     React.useEffect(() => {
         const fetchWords = async (string) => {
-            if (string !== " ") {
-                const wordArray = await convertWords(string);
-                return wordArray
+            console.log("text: ", text)
+
+            if(string === " "){
+                setMessage(message + " ")
+                console.log("message: ",message)
+
+
+            } else {
+                if (string !== "") {
+                    const wordArray = await convertWords(string);
+                    return wordArray
+                }
+
             }
+            
         }
 
         fetchWords(text).then(res => {
@@ -50,8 +63,8 @@ export default function ScreenComponent({ text, arrows }) {
 
     return (
         <div style={{ zIndex: '3', gridArea: 'overlap' }}>
-            <Typography  style={{ zIndex: '3', gridArea: 'overlap', position: "relative", top: "20px", left: "10px" }}>{message}</Typography>
-            <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", top: "173px", left: "130px" }}>
+            <Typography  style={{ zIndex: '3', gridArea: 'overlap', position: "relative", top: "25px", left: "16px" }}>{message}</Typography>
+            <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", top: "183px", left: "130px" }}>
                 <img alt="" src={UpDown_btn} tyle={{ zIndex: '3', gridArea: 'overlap' }} />
                 <Button onClick={() => changeWord("+")} size="small" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", right: "60px", bottom: "10px" }}><img alt="" src={Up_icon} /></Button>
                 <Button onClick={() => changeWord("-")} size="small" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", right: "150px", top: "10px" }}><img alt="" src={Down_icon} /></Button>
