@@ -11,17 +11,17 @@ import Key_9 from "../images/nokia/num_keys/9_btn.svg"
 import Hash_key from "../images/nokia/hash_btn.svg"
 import Star_btn from "../images/nokia/star_btn.svg"
 import Call_btn from "../images/nokia/call_btn.svg"
-import Action_btn from "../images/nokia/nokia_actionBtn.svg"
-import UpDown_btn from "../images/nokia/up_down_btn.svg"
-import Up_icon from "../images/nokia/up_icon.svg"
-import Down_icon from "../images/nokia/down_icon.svg"
 import { Button, Grid} from "@material-ui/core"
 import React from 'react';
 import ScreenComponent from "./screen_componet"
+import Action_btn from "../images/nokia/nokia_actionBtn.svg"
+
 
 const numberValue = ["2", "3", "4", "5", "6", "7", "8", "9", " "];
 
-// TODO: write funtion to capture numbers and send to screnn compent then click up down arrows to chnage words
+// TODO: write funtion to capture numbers and send to screnn compent then click up down arrows to chnage wo
+
+
 export default function NumberKeyPad() {
 
     const [numberCapture, setNumberCapture] = React.useState("");
@@ -34,18 +34,13 @@ export default function NumberKeyPad() {
             <div>
                 <ScreenComponent text={numberCapture} arrows={incrementWord} />
             </div>
-            <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "100px" }}>
-                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap' }} >
-                    <img alt="" src={Action_btn} style={{ position: "relative", top: "25px" }} />
+            <div style={{ zIndex: '2', gridArea: 'overlap', position: "relative", top: "60px" }}>
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", top: "25px" }} >
+                    <img alt="" src={Action_btn} style={{  }} />
                 </Grid>
 
-                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "20px", right: "40px" }} >
-                    <img alt="" src={Call_btn} style={{ position: "relative", left: "10px" }} />
-                    <img alt="" src={UpDown_btn} style={{ position: "relative", left: "70px", top: "5px" }} />
-                </Grid>
-                <Grid container justify="center" alignItems="center" style={{ zIndex: '3', gridArea: 'overlap', position: "relative", bottom: "50px", left: "10px" }} >
-                    <Button onClick={()=> changeWord("+")} size="small" style={{ position: "relative", left: "100px", bottom: "20px" }}><img alt="" src={Up_icon} /></Button>
-                    <Button onClick={()=> changeWord("-")} size="small"><img alt="" src={Down_icon} /></Button>
+                <Grid container justify="center" alignItems="center" style={{ zIndex: '1', gridArea: 'overlap', position: "relative", bottom: "15px", right: "60px" }} >
+                    <img alt="" src={Call_btn}/>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
                     <Button size="small"><img alt="" src={Key_1} /></Button>
