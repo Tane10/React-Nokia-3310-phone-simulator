@@ -4,7 +4,7 @@
 
      let data = JSON.stringify({ "numbers": numberString });
 
-     const url = 'http://2800b2a289c8.ngrok.io';
+     const url = 'http://localhost:8080';
 
      let config = {
          method: 'post',
