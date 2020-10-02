@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Grid } from '@material-ui/core';
 import NokiaBackground from "./images/nokia/nokia_background_shadow.svg";
-import NumberKeyPad from "./components/keyboard_component"
+import NumberKeyPad from "./components/keyboard/keyboard_component"
 
 function App() {
 
