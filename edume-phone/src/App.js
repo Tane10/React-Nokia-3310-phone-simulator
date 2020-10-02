@@ -4,10 +4,7 @@ import { Grid } from '@material-ui/core';
 import NokiaBackground from "./images/nokia/nokia_background_shadow.svg";
 import NumberKeyPad from "./components/keyboard/keyboard_component"
 
-function App() {
-
-  const [wordString, setWordString] = React.useState("");
-  
+function App() {  
   return (
     <div>
       <Grid container justify="center" alignItems="center">

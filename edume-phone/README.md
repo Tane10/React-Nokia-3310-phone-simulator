@@ -1,10 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Edume tech text: Nokia 3310
+This project shows a Nokia 3310 phone simulator, that will allow you to type using the phone buttons and the up and down arrows to change the word you're currently typing.
+
+The front end uses ReactJs and the backend is NodeJs. The backend queries a letter/ number matrix to get the words associated with the letters, then uses a Trie Search tree to find all real words inside a JSON file contain all the words in the Oxford Dictionary 
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
