@@ -8,8 +8,6 @@ import Call_btn from "../../images/nokia/call_btn.svg"
 import "./screen_componet.css"
 import "../../fonts/nokiafc22.ttf"
 
-
-//TODO: delete a letter from the message
 export default function ScreenComponent({ text }) {
     const [message, setMessage] = useState([]);
     const [wordList, setWordList] = useState([]);
@@ -55,15 +53,6 @@ export default function ScreenComponent({ text }) {
         console.log("current word:", newWord)
 
         text = newText
-        // text = newWord
-        // setCounter(0)
-        // setWord(newWord)
-      
-
-        // return text
-        // console.log("newword:", newWord)
-        // console.log("old text:", text)
-        // console.log("wordlidt:", wordList)
     }
 
     useEffect(() => {
@@ -110,7 +99,7 @@ export default function ScreenComponent({ text }) {
             </div>
 
             <Grid className="callBtnContainer" container justify="center" alignItems="center">
-                <Button size="small" onClick={clearChar} ><img alt="" src={Call_btn} /> </Button>
+                <Button size="small" ><img alt="" src={Call_btn} /> </Button>
             </Grid>
 
             <Grid className="upDownBtnContainer" container justify="center" alignItems="center">
