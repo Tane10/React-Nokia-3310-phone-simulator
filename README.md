@@ -1,5 +1,5 @@
 
-## Edume tech text: Nokia 3310
+## React Nokia 3310 phone simulator
 This project shows a Nokia 3310 phone simulator, that will allow you to type using the phone buttons and the up and down arrows to change the word you're currently typing.
 
 The front end uses ReactJs, the backend is NodeJs. The backend queries a letter/ number matrix to get the words associated with the letters, then uses a Trie Search tree to find all real words inside a JSON file containing the Oxford Dictionary.
